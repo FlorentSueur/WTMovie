@@ -3,6 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="500" Width="700">
     <Grid >
-        <Label x:Name="ResultLabel"/>
+        <StackPanel>
+            <TextBox x:Name="Title" Text="{Binding Title}" />
+            <Image x:Name="posterImage" Source="{Binding PosterLink}" Width="100" Height="100" />
+            <TextBox Text="{Binding Synopsis}" Width="300"/>
+            <TextBlock Text="{Binding ReleaseDate}"/>
+        </StackPanel>
     </Grid>
 </Window>

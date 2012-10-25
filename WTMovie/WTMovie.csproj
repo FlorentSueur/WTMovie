@@ -41,6 +41,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -58,10 +59,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="SimpleMovie.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="AlloCineMovieFinder.cs" />
+    <Compile Include="IMovieFinder.cs" />
     <Compile Include="JSonClasses\AlloCineMovie\AlloCineMovie.cs" />
     <Compile Include="JSonClasses\AlloCineMovieId\AlloCineMovieId.cs" />
     <Compile Include="App.xaml.cs">

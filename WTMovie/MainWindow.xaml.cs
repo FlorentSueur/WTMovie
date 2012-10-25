@@ -18,6 +18,7 @@ using System.Diagnostics;
 using Newtonsoft.Json;
 using WTMovie.JSonClasses.AlloCineMovieId;
 using WTMovie.JSonClasses.AlloCineMovie;
+using System.Windows.Forms;
 
 namespace WTMovie
 {
@@ -30,6 +31,7 @@ namespace WTMovie
         {
             InitializeComponent();
 
+            /*
             string movieName = "Avatar";
 
             string text = GetJSon("http://api.allocine.fr/rest/v3/search?partner=YW5kcm9pZC12M3M&filter=movie&count=1&page=1&q=" + movieName + "&format=json");
@@ -43,10 +45,22 @@ namespace WTMovie
             
             AlloCineMovie alloCineMovie = AlloCineMovie.FromJson(text);
 
-            ResultLabel.Content = "Avatar\n";
-            ResultLabel.Content += "\nVersion courte :\n" + alloCineMovie.Movie.SynopsisShort;
-            ResultLabel.Content += "\nVersion longue :\n" + alloCineMovie.Movie.Synopsis;
+            ResultLabel.Text = "Avatar\n";
+            ResultLabel.Text += "\nVersion courte :\n" + alloCineMovie.Movie.SynopsisShort;
+            ResultLabel.Text += "\nVersion longue :\n" + alloCineMovie.Movie.Genre.First().;
 
+             * */
+
+            IMovieFinder movieFinder = new AlloCineMovieFinder();
+            SimpleMovie movie = movieFinder.FindMovie("Avatar");
+
+            this.DataContext = movie;
+         /*   FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+            DialogResult dr = folderBrowserDialog.ShowDialog();
+            if (dr == System.Windows.Forms.DialogResult.OK)
+            {
+                var a = folderBrowserDialog.SelectedPath;
+            }*/
         }
 
         string GetJSon(string url)

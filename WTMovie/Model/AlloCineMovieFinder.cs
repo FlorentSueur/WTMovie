@@ -6,6 +6,7 @@ using WTMovie.JSonClasses.AlloCineMovie;
 using WTMovie.JSonClasses.AlloCineMovieId;
 using System.Net;
 using System.IO;
+using WTMovie.Model;
 
 namespace WTMovie
 {
@@ -22,6 +23,7 @@ namespace WTMovie
 
 
             AlloCineMovieId alloCineMovieId = AlloCineMovieId.FromJson(text);
+            
             int code = alloCineMovieId.Feed.Movie[0].Code;
 
             text = string.Empty;

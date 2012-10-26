@@ -19,6 +19,7 @@ using Newtonsoft.Json;
 using WTMovie.JSonClasses.AlloCineMovieId;
 using WTMovie.JSonClasses.AlloCineMovie;
 using System.Windows.Forms;
+using WTMovie.ViewModel;
 
 namespace WTMovie
 {
@@ -31,50 +32,13 @@ namespace WTMovie
         {
             InitializeComponent();
 
-            /*
-            string movieName = "Avatar";
-
-            string text = GetJSon("http://api.allocine.fr/rest/v3/search?partner=YW5kcm9pZC12M3M&filter=movie&count=1&page=1&q=" + movieName + "&format=json");
-
-
-            AlloCineMovieId alloCineMovieId = AlloCineMovieId.FromJson(text);
-            int code = alloCineMovieId.Feed.Movie[0].Code;
-
-            text = string.Empty;
-            text = GetJSon("http://api.allocine.fr/rest/v3/movie?partner=YW5kcm9pZC12M3M&code=" + code + "&profile=medium&mediafmt=mp4-lc&format=json&filter=movie&striptags=synopsis,synopsisshort");
-            
-            AlloCineMovie alloCineMovie = AlloCineMovie.FromJson(text);
-
-            ResultLabel.Text = "Avatar\n";
-            ResultLabel.Text += "\nVersion courte :\n" + alloCineMovie.Movie.SynopsisShort;
-            ResultLabel.Text += "\nVersion longue :\n" + alloCineMovie.Movie.Genre.First().;
-
-             * */
-
-            IMovieFinder movieFinder = new AlloCineMovieFinder();
-            SimpleMovie movie = movieFinder.FindMovie("Avatar");
-
-            this.DataContext = movie;
-         /*   FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
-            DialogResult dr = folderBrowserDialog.ShowDialog();
-            if (dr == System.Windows.Forms.DialogResult.OK)
+            Loaded += delegate
             {
-                var a = folderBrowserDialog.SelectedPath;
-            }*/
-        }
+                MasterViewModel masterViewModel = new MasterViewModel();
 
-        string GetJSon(string url)
-        {
-            WebRequest request = WebRequest.Create(url);
-            string text;
-            HttpWebResponse response = request.GetResponse() as HttpWebResponse;
-
-            using (var sr = new StreamReader(response.GetResponseStream()))
-            {
-                text = sr.ReadToEnd();
-            }
-
-            return text;
-        }
+                masterView.DataContext = masterViewModel;
+                detailView.DataContext = masterViewModel;
+            };
+        }       
     }
 }

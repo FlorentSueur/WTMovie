@@ -1,13 +1,11 @@
 ﻿<Window x:Class="WTMovie.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:View="clr-namespace:WTMovie.View"
         Title="MainWindow" Height="500" Width="700">
     <Grid >
-        <StackPanel>
-            <TextBox x:Name="Title" Text="{Binding Title}" />
-            <Image x:Name="posterImage" Source="{Binding PosterLink}" Width="100" Height="100" />
-            <TextBox Text="{Binding Synopsis}" Width="300"/>
-            <TextBlock Text="{Binding ReleaseDate}"/>
-        </StackPanel>
+        <View:MasterView x:Name="masterView"/>
+        <View:DetailView x:Name="detailView"/>
+        
     </Grid>
 </Window>
